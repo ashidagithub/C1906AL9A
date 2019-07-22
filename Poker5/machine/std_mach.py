@@ -232,11 +232,8 @@ def read_deck_crypted_csv(csv_filename, out_deck, private_key):
     f.close()
 
     row_data = rsa.decrypt(a2b_hex(line), private_key)
-    print('--debug: read from csv file : %s' % row_data.decode())
+    #print('--debug: read from csv file : %s' % row_data.decode())
     s = row_data.decode()
-    print(s.split(','))
-    #out_deck = s.split(',')
-    #out_deck = row_data.decode()
     out_deck.extend(s.split(','))
     print(out_deck)
 
