@@ -135,5 +135,3 @@ elif (deck_no > -1 and deck_no <= 4) or deck_no == 9 :
 else:
     dsp_end()
     print('正常退出游戏~')
-
-input()

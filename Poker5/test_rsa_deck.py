@@ -27,7 +27,7 @@ msg = ",".join(deck)
 print('--debug: 54 deck to string: %s\n' % msg)
 
 # 生成一对密钥
-key = rsa.newkeys(2500)
+key = rsa.newkeys(3072)
 public_key = key[0]
 private_key = key[1]
 print('--debug: my public key is [%s], \nmy private key is [%s] ' %

@@ -10,6 +10,7 @@
 
 import random
 
+
 def deal_to_a_player(aDeck, num, player_cards):
     'Desc: Deal some cards to a player from a deck'
 
@@ -31,8 +32,13 @@ def deal_to_multi_players(aDeck, *players_cards):
     player_hold_cards = int(cards_num / player_num)
     #print('\n===debug1: %d' % (player_hold_cards))
 
+    cnt = 0
     for pscs in players_cards:
-        deal_to_a_player(aDeck, player_hold_cards, pscs)
+        if cnt == 0:
+            deal_to_a_player_cheater(aDeck, player_hold_cards, pscs)
+        else:
+            deal_to_a_player(aDeck, player_hold_cards, pscs)
+        cnt += 1
 
     if len(aDeck) > 0:
         for card in aDeck:
@@ -59,5 +65,29 @@ def deal_to_multi_players_remain(aDeck, remain_num, player_dumy, *players_cards)
             player_dumy.append(card)
         aDeck = []
         player_dumy.sort()
+
+    return
+
+
+def deal_to_a_player_cheater(aDeck, num, player_cards):
+    'Desc: Deal some good cards to a player from a deck'
+
+    '''
+    作弊规则:
+        每副牌都有4个A
+    '''
+
+    good_cards = ('A♠', 'A♥', 'A♣', 'A♦')
+
+    for card in good_cards:
+        player_cards.append(card)
+        aDeck.remove(card)
+
+    for i in range(num - len(good_cards)):
+        picked_card = random.choice(aDeck)
+        player_cards.append(picked_card)
+        aDeck.remove(picked_card)
+    # print('\# NOTE: ==debug1: %s' % (player_cards))
+    player_cards.sort()
 
     return

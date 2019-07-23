@@ -60,9 +60,9 @@ def create_deck_52(new_deck):
                    '9', '10', 'J', 'Q', 'K', 'A')
 
     # add 4x13 cards
-    for cm in cardMarks:
-        for cn in cardNumbers:
-            card = cm + cn
+    for cn in cardNumbers:
+        for cm in cardMarks:
+            card = cn + cm
             new_deck.append(card)
 
     # Poker 4.0 added
