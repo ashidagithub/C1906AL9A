@@ -62,7 +62,7 @@ player_d = []
 player_dumy = []  # 放置预留牌的位置
 
 # Poker5 added
-key = rsa.newkeys(2500)
+key = rsa.newkeys(4500)
 public_key = key[0]
 private_key = key[1]
 

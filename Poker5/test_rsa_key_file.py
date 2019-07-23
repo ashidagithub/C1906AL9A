@@ -10,18 +10,18 @@
 import rsa
 
 # 先生成一对密钥，然后保存.pem格式文件，当然也可以直接使用
-key = rsa.newkeys(1024)
+key = rsa.newkeys(8192)
 public_key = key[0]
 private_key = key[1]
 
 # 将公钥及私钥写入key文件
 pub = public_key.save_pkcs1()
-pubfile = open('public.pem','wb')
+pubfile = open('public.pem', 'wb')
 pubfile.write(pub)
 pubfile.close()
 
 pri = private_key.save_pkcs1()
-prifile = open('private.pem','wb')
+prifile = open('private.pem', 'wb')
 prifile.write(pri)
 prifile.close()
 
