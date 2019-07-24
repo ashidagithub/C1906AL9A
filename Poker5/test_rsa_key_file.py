@@ -28,20 +28,22 @@ prifile.close()
 
 
 
-# load公钥和密钥
+# 读取公钥进行加密
 with open('public.pem') as publickfile:
     p = publickfile.read()
     public_key = rsa.PublicKey.load_pkcs1(p)
 
+# 用公钥加密
+msg = 'message for testing......'
+byte_msg = msg.encode()
+crypted_msg = rsa.encrypt(byte_msg, public_key)
+print('--debug: crypted message is [%s]' % crypted_msg)
+
+# 读取私钥进行解密解密
 with open('private.pem') as privatefile:
     p = privatefile.read()
     private_key = rsa.PrivateKey.load_pkcs1(p)
 
-# 用公钥加密
-msg = 'message for testing......'
-crypted_msg = rsa.encrypt(msg.encode(), public_key)
-print('--debug: crypted message is [%s]' % crypted_msg)
-
-# 用私钥解密
-msg = rsa.decrypt(crypted_msg, private_key)
-print('--debug: original message is [%s]' % msg.decode())
+byte_msg = rsa.decrypt(crypted_msg, private_key)
+msg = byte_msg.decode()
+print('--debug: original message is [%s]' % msg)
