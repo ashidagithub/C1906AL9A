@@ -11,7 +11,7 @@
 
 #from binascii import b2a_hex
 
-msg = '中'
+msg = '啊'
 byte_msg = msg.encode()
 print ('-- default: [%s]' % byte_msg)
 
