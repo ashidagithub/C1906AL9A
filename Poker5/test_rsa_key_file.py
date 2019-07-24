@@ -10,7 +10,7 @@
 import rsa
 
 # 先生成一对密钥，然后保存.pem格式文件，当然也可以直接使用
-key = rsa.newkeys(8192)
+key = rsa.newkeys(1024)
 public_key = key[0]
 private_key = key[1]
 
@@ -24,6 +24,9 @@ pri = private_key.save_pkcs1()
 prifile = open('private.pem', 'wb')
 prifile.write(pri)
 prifile.close()
+
+
+
 
 # load公钥和密钥
 with open('public.pem') as publickfile:
